@@ -1,0 +1,36 @@
+# Secondary safety net. The PRIMARY protection is that private files live
+# OUTSIDE this repo (in ../private/), where git cannot reach them at all.
+# These entries catch anything private that ever lands inside the repo tree.
+
+# Local env / secrets
+.env
+.env.*
+*.pem
+*.key
+
+# The runbook's populated config (real email/values). The .example template IS tracked.
+config.env
+commands/config.env
+
+# Run logs written by baseline.sh (default on; local record, not published).
+commands/logs/
+
+# Any private material that should never be published
+private/
+CHANGELOG.private.md
+**/*account-specific*
+**/*.private.*
+
+# Local agent wiring + work-in-progress. The .kiro/steering/ standards ARE tracked
+# (shared contributor context); everything else under .kiro/ stays local.
+.kiro/*
+!.kiro/steering/
+.kiro/steering/*.local.md
+
+# Local drafts / backups of docs (kept locally, never published)
+*-PREVIOUS.md
+*.bak
+*.orig
+
+# OS / editor cruft
+.DS_Store

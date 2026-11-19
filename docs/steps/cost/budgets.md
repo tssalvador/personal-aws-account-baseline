@@ -33,6 +33,11 @@ aws budgets create-budget --account-id <ACCOUNT_ID> --region us-east-1 \
 On an update, the budget amount is replaced via `update-budget`; the notification
 subscriber is left in place.
 
+A new `ALERT_EMAIL` gets no alerts until you confirm it. AWS emails a verification
+link (from an `@aws.com` address) that you must open while signed in to the account.
+The link expires after 12 hours. See
+[Adding email recipients to a budget notification](https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-email-recipients.html).
+
 The budget is tagged `ManagedBy` (create time, and reconciled on `--update`); see
 [Resource tags](../../configuration.md#resource-tags).
 
@@ -42,4 +47,6 @@ The budget is tagged `ManagedBy` (create time, and reconciled on `--update`); se
 ```
 aws budgets describe-budgets --account-id <ACCOUNT_ID> --region us-east-1
 ```
-Lists your Monthly-Cost budget with the right subscriber.
+Lists your Monthly-Cost budget with the right subscriber. For a new or changed
+`ALERT_EMAIL`, also confirm the recipient shows as Active on the budget's detail page
+in the Billing console, where AWS documents the verification status.
